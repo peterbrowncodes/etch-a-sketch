@@ -15,3 +15,10 @@ extra credit
 - incrementally darken square by 10% on each interaction
 
 */
+
+// VARIABLES
+const container = document.querySelector("#container");
+
+function addDiv() {
+  const newDiv = document.createElement("div")
+}
