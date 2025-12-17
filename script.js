@@ -18,8 +18,23 @@ extra credit
 
 // VARIABLES
 const container = document.querySelector("#container");
+const button = document.querySelector("userPrompt");
+let maxWidth = 960;
 let cellNum;
 let cellWidth;
+
+// USER PROMPT
+button.addEventListener("click", (num) => {
+  let prompt = "Pick a number of squares";
+
+  //Checks input is number
+  if Number(prompt) {
+    cellNum = Math.floor(prompt / maxWidth);
+  } else {
+    alert("That's not a number.");
+  }
+});
+
 
 // CREATES DIVS IN CONTAINER
 function addDivs() {
