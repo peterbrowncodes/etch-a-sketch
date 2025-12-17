@@ -26,6 +26,7 @@ let userInput;
 let red;
 let green;
 let blue;
+let opacity = 0;
 
 // USER PROMPT
 button.addEventListener("click", () => {
@@ -44,6 +45,13 @@ button.addEventListener("click", () => {
   addDivs();
 })
 
+// INCREASES OPACITY
+container.addEventListener("mouseenter", () => {
+  opacity = opacity + 0.1;
+  container.style.opacity = opacity;
+  console.log(opacity);
+})
+  
 
 // CREATES DIVS IN CONTAINER
 function addDivs() {
@@ -56,9 +64,6 @@ function addDivs() {
       newDiv.style.height = formatWidth;
       newDiv.style.display = "block";
       newDiv.style.backgroundColor = `rgb(${red} ${green} ${blue})`;
-      console.log(red);
-      console.log(green);
-      console.log(blue);
 
       if (j % 2 === 0) {
         newDiv.classList.add("even");

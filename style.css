@@ -66,6 +66,10 @@ button {
   flex-wrap: wrap;
 }
 
+#flex-container div {
+  opacity: 0;
+}
+
 .even {
   background-color: #FFFFFF;
 }
