@@ -18,38 +18,44 @@ extra credit
 
 // VARIABLES
 const container = document.querySelector("#container");
-const button = document.querySelector("userPrompt");
+const button = document.querySelector("#userPrompt");
 let maxWidth = 960;
 let cellNum;
 let cellWidth;
 
 // USER PROMPT
-button.addEventListener("click", (num) => {
-  let prompt = "Pick a number of squares";
+
+button.addEventListener("click", () => {
+  let userInput = prompt("Pick a number of squares");
 
   //Checks input is number
-  if Number(prompt) {
-    cellNum = Math.floor(prompt / maxWidth);
+  if (Number(userInput) && (userInput <= 100)) {
+    cellNum = Math.floor(userInput);
+    cellWidth = Math.floor(maxWidth / userInput);
+    console.log("formatted user input: " + cellNum);
+    console.log("width per cell: " + cellWidth);    
   } else {
     alert("That's not a number.");
   }
-});
+
+  addDivs();
+})
 
 
 // CREATES DIVS IN CONTAINER
 function addDivs() {
-  for i = 0; i < 17; i++ {
+  for (i = 0; i < 17; i++) {
     const newDiv = document.createElement("div");
-    newDiv.style.width = cellWidth + "px";
-    newDiv.style.height = cellHeight + "px";
+    let formatWidth = cellWidth + "px";
+    newDiv.style.width = formatWidth;
+    newDiv.style.height = formatWidth;
+    newDiv.style.display = "block";
 
-    if (i % 2 = 0) {
-      newDiv.className("even");
+    if (i % 2 === 0) {
+      newDiv.classList.add("even");
     } else {
-      newDiv.className("odd");
+      newDiv.classList.add("odd");
     };
+    container.appendChild(newDiv);
   } 
-  container.appendChild(newDiv);
 }
-
-addDivs()
