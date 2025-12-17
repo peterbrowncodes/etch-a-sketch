@@ -49,9 +49,21 @@ table {
 	border-spacing: 0;
 }
 
+button {
+  margin: 20px;
+}
+
 #container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+#flex-container {
   max-width: 960px !important;
   border: solid 2px #000000;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .even {

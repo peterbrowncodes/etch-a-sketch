@@ -17,16 +17,17 @@ extra credit
 */
 
 // VARIABLES
-const container = document.querySelector("#container");
+const container = document.querySelector("#flex-container");
 const button = document.querySelector("#userPrompt");
 let maxWidth = 960;
 let cellNum;
 let cellWidth;
+let userInput;
 
 // USER PROMPT
 
 button.addEventListener("click", () => {
-  let userInput = prompt("Pick a number of squares");
+  userInput = prompt("Pick a number of squares");
 
   //Checks input is number
   if (Number(userInput) && (userInput <= 100)) {
@@ -44,18 +45,20 @@ button.addEventListener("click", () => {
 
 // CREATES DIVS IN CONTAINER
 function addDivs() {
-  for (i = 0; i < 17; i++) {
-    const newDiv = document.createElement("div");
-    let formatWidth = cellWidth + "px";
-    newDiv.style.width = formatWidth;
-    newDiv.style.height = formatWidth;
-    newDiv.style.display = "block";
+  for (i = 0; i < userInput; i++) {
+    for (j = 0; j < userInput; j++) {
+      const newDiv = document.createElement("div");
+      let formatWidth = cellWidth + "px";
+      newDiv.style.width = formatWidth;
+      newDiv.style.height = formatWidth;
+      newDiv.style.display = "block";
 
-    if (i % 2 === 0) {
-      newDiv.classList.add("even");
-    } else {
-      newDiv.classList.add("odd");
-    };
-    container.appendChild(newDiv);
-  } 
+      if (j % 2 === 0) {
+        newDiv.classList.add("even");
+      } else {
+        newDiv.classList.add("odd");
+      };
+      container.appendChild(newDiv);
+    }
+  }
 }
