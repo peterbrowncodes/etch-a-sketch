@@ -18,7 +18,23 @@ extra credit
 
 // VARIABLES
 const container = document.querySelector("#container");
+let cellNum;
+let cellWidth;
 
-function addDiv() {
-  const newDiv = document.createElement("div")
+// CREATES DIVS IN CONTAINER
+function addDivs() {
+  for i = 0; i < 17; i++ {
+    const newDiv = document.createElement("div");
+    newDiv.style.width = cellWidth + "px";
+    newDiv.style.height = cellHeight + "px";
+
+    if (i % 2 = 0) {
+      newDiv.className("even");
+    } else {
+      newDiv.className("odd");
+    };
+  } 
+  container.appendChild(newDiv);
 }
+
+addDivs()
