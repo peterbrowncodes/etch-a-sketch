@@ -23,9 +23,11 @@ let maxWidth = 960;
 let cellNum;
 let cellWidth;
 let userInput;
+let red;
+let green;
+let blue;
 
 // USER PROMPT
-
 button.addEventListener("click", () => {
   userInput = prompt("Pick a number of squares");
 
@@ -47,11 +49,16 @@ button.addEventListener("click", () => {
 function addDivs() {
   for (i = 0; i < userInput; i++) {
     for (j = 0; j < userInput; j++) {
+      hexColor();
       const newDiv = document.createElement("div");
       let formatWidth = cellWidth + "px";
       newDiv.style.width = formatWidth;
       newDiv.style.height = formatWidth;
       newDiv.style.display = "block";
+      newDiv.style.backgroundColor = `rgb(${red} ${green} ${blue})`;
+      console.log(red);
+      console.log(green);
+      console.log(blue);
 
       if (j % 2 === 0) {
         newDiv.classList.add("even");
@@ -61,4 +68,11 @@ function addDivs() {
       container.appendChild(newDiv);
     }
   }
+}
+
+// HEX COLOR GENERATOR
+function hexColor() {
+  red = Math.floor(Math.random(255) * 100);
+  green = Math.floor(Math.random(255) * 100);
+  blue = Math.floor(Math.random(255) * 100);
 }
