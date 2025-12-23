@@ -17,8 +17,9 @@ extra credit
 */
 
 // VARIABLES
-const container = document.querySelector("#flex-container");
+const container = document.querySelector("#div-container");
 const button = document.querySelector("#userPrompt");
+const divs = document.querySelectorAll(".div-item");
 let maxWidth = 960;
 let cellNum;
 let cellWidth;
@@ -26,7 +27,39 @@ let userInput;
 let red;
 let green;
 let blue;
-let opacity = 0;
+
+
+// CREATES DIVS IN CONTAINER
+function addDivs() {
+  for (i = 0; i < userInput; i++) {
+    for (j = 0; j < userInput; j++) {
+      hexColor();
+      const newDiv = document.createElement("div");
+      let formatWidth = cellWidth + "px";
+      newDiv.style.width = formatWidth;
+      newDiv.style.height = formatWidth;
+      newDiv.style.display = "block";
+      newDiv.style.backgroundColor = `rgb(${red} ${green} ${blue})`;
+      newDiv.classList.add("div-item");
+      container.appendChild(newDiv);
+      
+    }
+  }
+}
+
+function increment(a) {
+  let input = parseInt(a, 10);
+  input += 0.1;
+  return input;
+}
+
+// HEX COLOR GENERATOR
+function hexColor() {
+  red = Math.floor(Math.random(255) * 100);
+  green = Math.floor(Math.random(255) * 100);
+  blue = Math.floor(Math.random(255) * 100);
+}
+
 
 // USER PROMPT
 button.addEventListener("click", () => {
@@ -42,42 +75,21 @@ button.addEventListener("click", () => {
     alert("That's not a number.");
   }
 
-  addDivs();
-})
+  addDivs();  
+});
 
-// INCREASES OPACITY
-container.addEventListener("mouseenter", () => {
-  opacity = opacity + 0.1;
-  container.style.opacity = opacity;
-  console.log(opacity);
-})
-  
 
-// CREATES DIVS IN CONTAINER
-function addDivs() {
-  for (i = 0; i < userInput; i++) {
-    for (j = 0; j < userInput; j++) {
-      hexColor();
-      const newDiv = document.createElement("div");
-      let formatWidth = cellWidth + "px";
-      newDiv.style.width = formatWidth;
-      newDiv.style.height = formatWidth;
-      newDiv.style.display = "block";
-      newDiv.style.backgroundColor = `rgb(${red} ${green} ${blue})`;
+container.addEventListener('mouseover', function(event) {
+  let selection = event.target;
+  if (selection.matches('.div-item')) {
+      // selection.classList.add('highlight'); // Add a class for the hover effect
+      // Run other JavaScript logic here if needed
+      let computedStyle = window.getComputedStyle(selection);
+      let currentOpacity = parseFloat(computedStyle.opacity);
+      console.log(`current opacity: ${currentOpacity}`);
 
-      if (j % 2 === 0) {
-        newDiv.classList.add("even");
-      } else {
-        newDiv.classList.add("odd");
-      };
-      container.appendChild(newDiv);
-    }
+      currentOpacity += 0.1;
+      selection.style.opacity = currentOpacity
+      console.log(`new opacity value: ${currentOpacity}`);
   }
-}
-
-// HEX COLOR GENERATOR
-function hexColor() {
-  red = Math.floor(Math.random(255) * 100);
-  green = Math.floor(Math.random(255) * 100);
-  blue = Math.floor(Math.random(255) * 100);
-}
+});

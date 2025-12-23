@@ -23,27 +23,33 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
   background-color: #FFFFFF;
   margin: 0 auto;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -59,14 +65,14 @@ button {
   padding: 30px;
 }
 
-#flex-container {
+#div-container {
   max-width: 960px !important;
   border: solid 2px #000000;
   display: flex;
   flex-wrap: wrap;
 }
 
-#flex-container div {
+.div-item {
   opacity: 0;
 }
 
@@ -76,4 +82,8 @@ button {
 
 .odd {
   background-color: #b5b5b5;
+}
+
+.highlight {
+  opacity: 1;
 }
